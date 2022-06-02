@@ -1,0 +1,17 @@
+services:
+  frontend:
+    image: node:17.5.0-slim
+    volumes:
+      - ./frontend:/app:delegated
+    working_dir: /app
+    environment:
+      HOST: 0.0.0.0
+      PORT: 80
+      WS_PORT: 86
+      BASE_URL: http://localhost
+    ports:
+      - 85:80
+      - 86:86
+    env_file:
+      - .env
+    command: bash -c 'cd ./study-react/ && npm install && npm run dev -- --host 0.0.0.0 --port 80'
