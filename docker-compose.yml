@@ -3,6 +3,7 @@ services:
     image: node:17.5.0-slim
     volumes:
       - ./frontend:/app:delegated
+      - study-react-todo-app_node_modules:/app/study-react/node_modules
     working_dir: /app
     environment:
       HOST: 0.0.0.0
@@ -15,3 +16,5 @@ services:
     env_file:
       - .env
     command: bash -c 'cd ./study-react/ && npm install && npm run dev -- --host 0.0.0.0 --port 80'
+volumes:
+  study-react-todo-app_node_modules:
